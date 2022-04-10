@@ -47,12 +47,14 @@ public class Main {
                         arrivalTimes.add(s);
                         
                     } 
+                   
                 }
                 
             }
             if(arrivalTimes==null){
                 System.out.println("Sorry! There are no arrival times available for your input.");
             }
+            Collections.sort(arrivalTimes);
             for(int i = 0;i < arrivalTimes.size();i++){
                 System.out.println(arrivalTimes.get(i));
             
@@ -63,11 +65,16 @@ public class Main {
 
     }
     else if(input.equals(three)){
+        try{
         System.out.println("Type in the bus stop ID that you want to start at: ");
         int startStop = Integer.parseInt(scanner.next());
         System.out.println("Type in the bus stop ID that you want to get to: ");
         int endStop = Integer.parseInt(scanner.next());
         ShortestPath.getPath(startStop, endStop);
+        }
+        catch(Exception e){
+            System.out.println("No such bus stop ID");
+        }
 
     }
         }
@@ -75,6 +82,7 @@ public static void check(){
     System.out.println("Incorrect time given.");
 }
 public static void searchBusStop(TST tree,String stopName){
+    
     Iterable<String> stops = tree.keysWithPrefix(stopName);
     boolean validStops = false;
     for(String key : stops){
@@ -82,12 +90,8 @@ public static void searchBusStop(TST tree,String stopName){
             validStops = true;
             break;
         }
-        if(tree.contains(null)){
-            System.out.println("No buses!");
-        }
     }
     if(validStops){
-
     for(String key : stops){
     Stop stop = tree.get(key);
     System.out.println("Stop Name:"+stop.stopName+" || Stop Number:"+stop.stopNumber+"."+stop.stopCode);
