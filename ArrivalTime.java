@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 public class ArrivalTime {
+    // Checking if valid time
     public static boolean checkValidArrivalTime(String input){
         try{
         String[] time = input.split(":");
@@ -21,7 +22,7 @@ public class ArrivalTime {
         return false;
     }
     }
-    
+    // Checking if input time matches time from stops_times.txt
     public static boolean checkRequiredArrivalTime(String input,String fileTime){
         String line = input;
         String[] lineInformation = line.split(":");

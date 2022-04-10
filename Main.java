@@ -9,12 +9,13 @@ public class Main {
     public final static String four = "4";
     
     public static void main(String[] args){
-        
+        // Start of System
         System.out.println("Welcome to the Vancouver Transport System Interface!");
         Scanner scanner = new Scanner(System.in);
         System.out.println("For information regarding the shortest path between two bus stops type '1'"+"\n"+"For information regarding stop names type '2'"
         +"\n"+"For information regarding arrival times type '3'"+"\n"+"To exit the interface type '4'");
         String input = scanner.nextLine();
+        // If user wants to search for the name of a bus stop
         if(input.equals(two)){
             System.out.println("Choose a bus stop: ");
             String stop = scanner.next();
@@ -23,6 +24,7 @@ public class Main {
             searchBusStop(tree,stop.toUpperCase());
             
         }
+        // If user wants to get all trips with matching arrival time
         else if(input.equals(three)){
             System.out.println("Please choose an arival time: ");
             String arrivalTime = scanner.nextLine();
@@ -54,7 +56,9 @@ public class Main {
             if(arrivalTimes.get(0)==null){
                 System.out.println("Sorry! There are no arrival times available for your input.");
             }
+            // Sorting by TRIPID
             Collections.sort(arrivalTimes);
+            // printing out matching trips
             for(int i = 0;i < arrivalTimes.size();i++){
                 System.out.println(arrivalTimes.get(i));
         }
@@ -63,6 +67,7 @@ public class Main {
         }
 
     }
+    // if user wants to get the shortest path between two stops
     else if(input.equals(one)){
         try{
         System.out.println("Type in the bus stop ID that you want to start at: ");
@@ -76,6 +81,7 @@ public class Main {
         }
 
     }
+    // if user wants to exit system
     else if(input.equals(four)){
         System.out.println("Thank you for visiting the Vancouver Bus System interface. Have a great day!");
     }
@@ -83,11 +89,12 @@ public class Main {
         System.out.println("Incorrect input!");
     }
         }
+// method for printing if there was an incorrect time given
 public static void check(){
     System.out.println("Incorrect time given.");
 }
+// method to get bus stops with same prefix of characters inputted and prints them out
 public static void searchBusStop(TST tree,String stopName){
-    
     Iterable<String> stops = tree.keysWithPrefix(stopName);
     boolean validStops = false;
     for(String key : stops){
@@ -96,7 +103,6 @@ public static void searchBusStop(TST tree,String stopName){
             break;
         }
     }
-    
     if(validStops){
     for(String key : stops){
     Stop stop = tree.get(key);

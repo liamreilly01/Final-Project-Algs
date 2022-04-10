@@ -14,7 +14,7 @@ public class ShortestPath{
         graph = Transfers();
 
     }
-
+    // Adding vertices to graph
     public EdgeWeightedDigraph Vertices(String filename){
         int numberOfStops = -1;
         File file = new File(filename);
@@ -32,7 +32,7 @@ public class ShortestPath{
         return graph;
 
     }
-
+    // Adding stop costs to graph
     public EdgeWeightedDigraph StopTimes(){
         String categories;
         String current;
@@ -73,7 +73,7 @@ public class ShortestPath{
         }
         return graph;
     }
-
+    // Adding transfer cost to graph
     public EdgeWeightedDigraph Transfers(){
         String categories;
         String current;
