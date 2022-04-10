@@ -27,8 +27,9 @@ public class TST {
                 String stop = scanner.nextLine();
                 String[] stopInformation = stop.split(",");
                 int ID = Integer.parseInt(stopInformation[0]);
+                int stopCode = Integer.parseInt(stopInformation[1]);
                 String stopName = stopInformation[2];
-                Stop stops = new Stop(stopName, ID);
+                Stop stops = new Stop(stopName,ID,stopCode);
                 put(stops.stopName,stops);
             }
             scanner.close();

@@ -1,9 +1,11 @@
 public class Stop {
     public String stopName;
     public int stopNumber;
+    public int stopCode;
      
-    public Stop(String stopName, int stopNumber){
+    public Stop(String stopName, int stopNumber, int stopCode){
         this.stopNumber = stopNumber;
+        this.stopCode = stopCode;
         String[] stop = stopName.split(" ");
         if(stop[0].equalsIgnoreCase("FLAGSTOP")){
             String keyWord = stop[0];

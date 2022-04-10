@@ -47,21 +47,21 @@ public class ShortestPath{
             next = scanner.nextLine();
             String [] lineInformation1 = current.split(",");
             String [] lineInformation2 = next.split(",");
-            if(lineInformation1[0] == lineInformation2[0]){
+            if(lineInformation1[0].equals(lineInformation2[0])){
                 String currentStopNumber = lineInformation1[3];
                 String nextStopNumber = lineInformation2[3];
                 int currentStopNumberInt = Integer.parseInt(currentStopNumber);
                 int nextStopNumberInt = Integer.parseInt(nextStopNumber);
-                if(map.get(currentStopNumber) == null){
+                if(map.get(currentStopNumberInt) == null){
                     map.put(currentStopNumberInt, index);
                     index++;
                 }
-                if(map.get(nextStopNumber) == null){
+                if(map.get(nextStopNumberInt) == null){
                     map.put(nextStopNumberInt, index);
                     index++;
                 }
                 weight = 1;
-                DirectedEdge edge = new DirectedEdge(map.get(currentStopNumber), map.get(nextStopNumber), weight);
+                DirectedEdge edge = new DirectedEdge(map.get(currentStopNumberInt), map.get(nextStopNumberInt), weight);
                 graph.addEdge(edge);
             }
             current = next;
@@ -81,8 +81,8 @@ public class ShortestPath{
         try{
         Scanner scanner = new Scanner(file);
         categories = scanner.nextLine();
-        current = scanner.nextLine();
         while(scanner.hasNextLine()){
+            current = scanner.nextLine();
             String [] lineInformation1 = current.split(",");
             int srcStop = Integer.parseInt(lineInformation1[0]);
             int destStop = Integer.parseInt(lineInformation1[1]);
@@ -94,7 +94,7 @@ public class ShortestPath{
                     map.put(destStop, index);
                     index++;
                 }
-                double weight;
+                double weight = 0;
                 int transferWeight = Integer.parseInt(lineInformation1[2]);
                 if(transferWeight == 0){
                     weight = 2;
@@ -124,7 +124,7 @@ public class ShortestPath{
             Iterable<DirectedEdge> stopRoute = d.pathTo(destinationIndex);
             System.out.println("Stops en route: ");
             for(DirectedEdge stop : stopRoute){
-                System.out.print("Stop ID" + stop.to() + " cost " + stop.weight());
+                System.out.println("Stop ID: " + stop.to() + " cost " + stop.weight()+" ");
             }
             return true;
         }
