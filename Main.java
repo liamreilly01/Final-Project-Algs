@@ -6,15 +6,16 @@ public class Main {
     public final static String one = "1";
     public final static String two = "2";
     public final static String three = "3";
+    public final static String four = "4";
     
     public static void main(String[] args){
-        Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Welcome to the Vancouver Transport System Interface!");
-        System.out.println("For infomration regarding stop names type '1'"+"\n"+"For information regarding arrival times type '2'"
-        +"\n"+"For shortest path between two bus stops type '3'");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("For information regarding the shortest path between two bus stops type '1'"+"\n"+"For information regarding stop names type '2'"
+        +"\n"+"For information regarding arrival times type '3'"+"\n"+"To exit the interface type '4'");
         String input = scanner.nextLine();
-        System.out.println(input);
-        if(input.equals(one)){
+        if(input.equals(two)){
             System.out.println("Choose a bus stop: ");
             String stop = scanner.next();
             String filename = "stops.txt";
@@ -22,7 +23,7 @@ public class Main {
             searchBusStop(tree,stop.toUpperCase());
             
         }
-        else if(input.equals(two)){
+        else if(input.equals(three)){
             System.out.println("Please choose an arival time: ");
             String arrivalTime = scanner.nextLine();
             String filename = "stop_times.txt";
@@ -49,22 +50,20 @@ public class Main {
                     } 
                    
                 }
-                
             }
-            if(arrivalTimes==null){
+            if(arrivalTimes.get(0)==null){
                 System.out.println("Sorry! There are no arrival times available for your input.");
             }
             Collections.sort(arrivalTimes);
             for(int i = 0;i < arrivalTimes.size();i++){
                 System.out.println(arrivalTimes.get(i));
-            
         }
      } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
     }
-    else if(input.equals(three)){
+    else if(input.equals(one)){
         try{
         System.out.println("Type in the bus stop ID that you want to start at: ");
         int startStop = Integer.parseInt(scanner.next());
@@ -76,6 +75,12 @@ public class Main {
             System.out.println("No such bus stop ID");
         }
 
+    }
+    else if(input.equals(four)){
+        System.out.println("Thank you for visiting the Vancouver Bus System interface. Have a great day!");
+    }
+    else{
+        System.out.println("Incorrect input!");
     }
         }
 public static void check(){
@@ -91,11 +96,15 @@ public static void searchBusStop(TST tree,String stopName){
             break;
         }
     }
+    
     if(validStops){
     for(String key : stops){
     Stop stop = tree.get(key);
     System.out.println("Stop Name:"+stop.stopName+" || Stop Number:"+stop.stopNumber+"."+stop.stopCode);
    }
+  }
+  else{
+      System.out.println("No stops!");
   }
  }
 }
