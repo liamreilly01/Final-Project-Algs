@@ -8,7 +8,6 @@ public class Main {
     public final static String three = "3";
     
     public static void main(String[] args){
-        ShortestPath.getPath(1255, 1270);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Vancouver Transport System Interface!");
         System.out.println("For infomration regarding stop names type '1'"+"\n"+"For information regarding arrival times type '2'"
@@ -44,7 +43,7 @@ public class Main {
                 else if(timeObject.checkValidArrivalTime(arrivalTime)){
                     if(timeObject.checkRequiredArrivalTime(arrivalTime,time)){
                         String s = "Trip ID:"+lineInformation[0]+" Arrival Time:"+lineInformation[1]+" Departure Time:"+lineInformation[2]+
-                        " Sequence Stop:"+lineInformation[3];
+                        " Stop ID:"+lineInformation[3]+" Sequence Stop:"+lineInformation[4]+" Headsign:"+lineInformation[5]+" Pickup Type:"+lineInformation[6]+" Drop Off Type:"+lineInformation[7];
                         arrivalTimes.add(s);
                         
                     } 

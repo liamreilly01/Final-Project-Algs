@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 public class ArrivalTime {
     public static boolean checkValidArrivalTime(String input){
+        try{
         String[] time = input.split(":");
         int hours = Integer.parseInt(time[0]);
         int minutes = Integer.parseInt(time[1]);
@@ -15,6 +16,10 @@ public class ArrivalTime {
             }
         }
         return false;  
+    }
+    catch(Exception e){
+        return false;
+    }
     }
     
     public static boolean checkRequiredArrivalTime(String input,String fileTime){
