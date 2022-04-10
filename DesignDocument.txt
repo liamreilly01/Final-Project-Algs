@@ -1,0 +1,29 @@
+Part One - Shortest path between two stops.
+
+On our previous assignment, we implemented Dijkstra's Algorithm and Bellman-Ford's Algorithm. I chose against the Bellman-Ford Algorithm as there was no
+negative weighting involved between any of the bus stops and transfers. Even though the Bellman-Ford Algorithm doesn't have to deal with negative
+weights in order to get the shortest path, but it is also more time consuming. Bellman-Ford's algorithm has a time complexity of Theta(Vertices x Edges),
+whereas Dijkstra's Algorithm has a time complexity of Theta(Edges x log(Vertices)). I also thought of using A* algorithm but thought that it
+would be hard to figure out the herusitic. In the previous assignment, I used a 2-D array to implement Dijkstra's Algorithm which I think was sufficient 
+for the magnitude of the assignment however I decided to use the Dijkstra's algorithm on the Princeton website used in class to make it slightly easier for myself
+https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/.
+For the actual shortest path between two stops part, I stored the information in a hashmap, which then that information was stored in respective
+Directed Edges and then placed in a weighted Directed Graph.
+
+Part Two - Searching for a bus stop by full name or some of the characters in the name
+For this part of the assignment, I used a TST because it was mandatory. I also made a Stop class which changed the wording of the stops which placed the keywords
+specified in the assignment at the end of the stop name string instead of the start. There was many ways in which to perform this, in which I started off with a method on its
+own but then chose otherwise as it was less code and easier to implement.
+
+Part Three - Printing out the trips at a given arrival time, sorted by the TRIP instead
+For this part of the assignment, I used two boolean methods. The first one checked if the time inputted was correct and in the right format, while
+the second one based it against each arrival time of every trip. If they both returned true, they were added into an ArrayList. I then used
+the Collections.sort() method from the Collections library to sort the arrayList by TRIPID.
+
+Part Four - The Interface
+I assigned each activity a number of type String 
+1 = Shortest path
+2 = Bus stop Searching
+3 = Arrival times
+4 = Quit
+If the input matched any of them, the desginated activity code would activate.
